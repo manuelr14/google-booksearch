@@ -1,28 +1,31 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 import Books from "./pages/Books";
-import Detail from "./pages/Detail";
-import NoMatch from "./pages/NoMatch";
-import Nav from "./components/Nav";
+import Saved from "./pages/Saved";
+import Home from "./pages/Home";
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 
 function App() {
+
   return (
-    <Router>
-      <div>
-        <Nav />
-        <Switch>
-          <Route exact path={["/", "/books"]}>
-            <Books />
-          </Route>
-          <Route exact path="/books/:id">
-            <Detail />
-          </Route>
-          <Route>
-            <NoMatch />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+    <ThemeProvider theme={createMuiTheme({})}>
+      <Router>
+        <Navbar>
+        <Container>
+          <Switch>
+            <Route path="/booksearch" component={Books} />
+            <Route path="/saved" component={Saved} />
+            <Route path="/" component={Home} />
+            {/* <Books /> */}
+            <Saved />
+          </Switch>
+        </Container>
+        </Navbar>
+      </Router>
+    </ThemeProvider>
   );
 }
 

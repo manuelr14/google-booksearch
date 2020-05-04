@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 function Books() {
+  const classes = useStyles();
   // Setting our component's initial state
   const [books, setBooks] = useState([])
   const [formObject, setFormObject] = useState({})
@@ -40,9 +41,9 @@ function Books() {
   }
 
   // Load all books and store them with setBooks
-  useEffect(() => {
-    loadBooks()
-  }, [])
+  // useEffect(() => {
+  //   loadBooks()
+  // }, [])
 
   // Loads all books and sets them to books
   function loadBooks() {
